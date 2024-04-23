@@ -1,0 +1,79 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // top|left|bottom|right
+    "height": 35, // Waybar height (to be removed for auto height)
+    "spacing": 5, // Gaps between modules (4px)
+    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "pulseaudio", "cpu", "memory", "keyboard-state", "clock"],
+    "hyprland/workspaces": {
+	      "format": "{icon}",
+	      "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+	      "format-icons": {
+            "default": "",
+	          "1":"1",
+	          "2":"2",
+            "3":"3",
+            "4":"4",
+            "5":"5",
+            "6":"6",
+            "7":"7",
+            "8":"8",
+            "9":"9",
+            "10":"10"
+	      }	
+    }, 
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*)Mozilla Firefox": "Firefox",
+            "Alacritty": "Terminal",
+          }
+    }, 
+    "clock": {
+        "timezone": "Europe/Brussels",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}"
+    },
+    "cpu": {
+        "interval": 2,
+        "format": "CPU   {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "interval": 2,
+        "format": "RAM   {}%"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}   {volume}%   {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "interval": 2,
+        "return-type": "json",
+        "format": "{}",
+        "escape": true,
+        "exec": "/home/aindustries/Code/playerctlwaybar/target/release/playerctlwaybar",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl previous",
+        "on-scroll-down": "playerctl next"
+    }
+}
+

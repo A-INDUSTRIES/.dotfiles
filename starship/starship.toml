@@ -1,0 +1,26 @@
+format = '''
+[⎧ ](white)$username[@](white)$hostname [|](white) $directory(bold blue)$python(bold green)$rust(bold red)
+[⎩](white) '''
+
+scan_timeout = 10
+
+add_newline = true
+
+[username]
+format = "[$user]($style)"
+style_user = "#f5bde6 bold" #rose bold
+style_root = "#ed8796 bold" #red bold
+show_always = true
+
+[hostname]
+format = "[$hostname]($style)"
+style = "#f0c6c6 bold"
+trim_at = ""
+ssh_only = false
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "#8aadf4 bold"
+home_symbol = "~"
+read_only = ""
+read_only_style = "red"
