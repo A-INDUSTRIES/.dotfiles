@@ -14,7 +14,9 @@
 #memory,
 #clock,
 #pulseaudio,
-#window{
+#window,
+#custom-brightness,
+#tray{
     background-color: @mantle;
     border-radius: 15px;
     padding-top: 2px;
@@ -29,6 +31,10 @@
 
 #window {
     color: @text;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
 }
 
 #workspaces button {
@@ -47,6 +53,10 @@
 
 #custom-gpu-usage {
     color: @peach;
+}
+
+#custom-brightness {
+    color: @maroon;
 }
 
 #memory {
