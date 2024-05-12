@@ -2,16 +2,17 @@
     "layer": "top",
     "position": "top",
     "height": 35,
-    "spacing": 5,
+    "spacing": 0,
     "modules-left": ["hyprland/workspaces", "custom/media"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "pulseaudio", "cpu", "memory", "custom/gpu-usage", "custom/brightness", "clock"],
+    "modules-right": ["tray", "pulseaudio", "cpu", "memory", "custom/gpu-usage", "custom/brightness", "battery", "clock", "custom/power"],
     "hyprland/workspaces": {
 	    "format": "{icon}",
 	    "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
 	    "format-icons": {
             "default": "",
+            "active": "",
 	        "1":"1",
 	        "2":"2",
             "3":"3",
@@ -39,19 +40,19 @@
     },
     "cpu": {
         "interval": 2,
-        "format": "CPU   {usage}%",
+        "format": "CPU  {usage}%",
         "tooltip": false,
         "on-click": "alacritty -e htop"
     },
     "memory": {
         "interval": 2,
-        "format": "RAM   {}%",
+        "format": "RAM  {}%",
         "on-click": "alacritty -e htop"
     },
     "pulseaudio": {
         "format": "{icon}  {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
         "format-muted": " {format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "",
@@ -62,6 +63,7 @@
     },
     "custom/media": {
         "interval": 2,
+        "max-length": 50,
         "return-type": "json",
         "escape": true,
         "exec": "playerctlwaybar",
@@ -70,14 +72,29 @@
         "on-scroll-down": "playerctl next"
     },
     "custom/gpu-usage": {
-        "format": "GPU   {}",
+        "format": "GPU  {}",
         "exec": "gpu-usage-waybar",
         "return-type": "json",
         "on-click": "alacritty -e nvtop",
     },
     "custom/brightness": {
-        "format": "  {}",
+        "format": " {}",
+        "interval": 2,
         "exec": "brightctl info",
         "on-click": "brightctl run"
+    },
+    "battery": {
+        "bat": "BAT1",
+        "interval": "60",
+        "states": {
+                "warning": 25,
+                "critical": 10,
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "hypedown"
     }
 }

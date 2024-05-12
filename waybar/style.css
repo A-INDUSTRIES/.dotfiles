@@ -1,7 +1,7 @@
 @import "macchiato.css";
 
 * {
-    font-family: "Hack Nerd Font";
+    font-family: "Hack Nerd Font Mono";
     font-size: 14px;
     font-weight: bold;
     background-color: transparent;
@@ -16,20 +16,31 @@
 #pulseaudio,
 #window,
 #custom-brightness,
-#tray{
+#tray,
+#battery,
+#custom-power{
     background-color: @mantle;
     border-radius: 15px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 12px;
     padding-right: 12px;
-    margin-left: 1px;
-    margin-right: 1px;
     margin-top: 1px;
     margin-bottom: 0px;
 }
 
+#workspaces {
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
 #window {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#window,
+#custom-power{
     color: @text;
 }
 
@@ -63,6 +74,22 @@ window#waybar.empty #window {
     color: @yellow;
 }
 
+#battery {
+    color: @blue;
+}
+
+#battery.discharging.warning {
+    color: @peach;
+}
+
+#battery.discharging.critical {
+    color: @red;
+}
+
+#battry.charging {
+    color: @green;
+}
+
 #clock {
     color: @flamingo;
 }
@@ -77,4 +104,24 @@ window#waybar.empty #window {
 
 #cpu {
     color: @pink;
+}
+
+.modules-right > * > * {
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+
+.modules-right > *:first-child > * {
+    margin-left: 5px;
+    margin-right: -4px;
+}
+
+.modules-right > *:last-child > * {
+    margin-right: 2px;
+    margin-left: -4px;
+}
+
+tooltip {
+    background-color: black;
 }
